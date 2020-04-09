@@ -1,0 +1,27 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>sign In</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content padding>
+  <h1 text-center>
+    <ion-icon name="chatboxes" color="primary" class="person-add"></ion-icon>
+  </h1>
+  <form [formGroup]="signInForm" (ngSubmit)="onSubmit(); novalidate">
+    <ion-item>
+      <ion-icon name="person" item-left></ion-icon>
+      <ion-input type="text" formControlName="email" placeholder="Email"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-icon name="lock" item-left></ion-icon>
+      <ion-input type="password" formControlName="uId" placeholder="Senha"></ion-input>
+    </ion-item>
+    <button ion-button full type="submit" margin-top [disabled]="signInForm.invalid">Entrar</button>
+  </form>
+
+  <button ion-button full clear text-center type="button" (click)="onSignUp()">Cadastre-se</button>
+ 
+</ion-content>

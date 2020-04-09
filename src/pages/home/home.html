@@ -1,0 +1,50 @@
+<ion-header>
+
+  <custom-logged-header text-center [title]="view | Capitalize: true"></custom-logged-header>
+  <ion-toolbar>
+    <ion-segment [(ngModel)]="view" color="primary">
+      <ion-segment-button value="usuarios" text-center>
+        <ion-icon name="people"></ion-icon>
+      </ion-segment-button>
+      <ion-segment-button value="chats" text-center>
+        <ion-icon name="chatboxes"></ion-icon>
+      </ion-segment-button>
+    </ion-segment>
+
+  </ion-toolbar>
+  <ion-toolbar>
+    <ion-searchbar (input)="filterItems($event)">
+
+    </ion-searchbar>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content padding>
+  <div [ngSwitch]="view">
+    <ion-list no-lines *ngSwitchCase="'chats'">
+      <button ion-item *ngFor="let c of chats | async" (click)="onChatOpen(c)">
+        <ion-avatar item-start>
+          <img [src]="c.photo || 'assets/imgs/no-photo.jpg'">
+        </ion-avatar>
+        <h2>{{c.title}}</h2>
+        <p *ngIf="c.lastMessage; else customMessage">{{c.timestamp | date:'dd/MM/yyyy H:mm'}} - {{c.lastMessage}}</p>
+        <ng-template #customMessage>
+          <p>não possui mensagens</p>
+        </ng-template>
+      </button>
+    </ion-list>
+
+
+    <ion-list *ngSwitchCase="'usuarios'">
+      <button ion-item *ngFor="let user of users | async" (click)="onChatCreate(user)">
+        <ion-avatar item-start>
+          <img [src]="user.photo || 'assets/imgs/no-photo.jpg'">
+        </ion-avatar>
+        {{user.nome}}
+      </button>
+    </ion-list>
+
+  </div>
+
+</ion-content>
