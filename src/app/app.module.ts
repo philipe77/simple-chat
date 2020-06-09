@@ -22,16 +22,13 @@ import { ComponentsModule } from '../components/components.module';
 import { ChatProvider } from '../providers/chat.service';
 import { MessageService } from '../providers/message.service';
 
-
-
-
 const firebaseAppConfig ={
-    apiKey: "AIzaSyC9Akx1Mlf1qh6qVlWtzkNb-nCnziEgjA0",
-    authDomain: "ionic-chat-302d0.firebaseapp.com",
-    databaseURL: "https://ionic-chat-302d0.firebaseio.com",
-    projectId: "ionic-chat-302d0",
-    storageBucket: "ionic-chat-302d0.appspot.com",
-    messagingSenderId: "873760497639"
+    apiKey: FIREBASE_CONFIG.apiKey,
+    authDomain: FIREBASE_CONFIG.authDomain,
+    databaseURL: FIREBASE_CONFIG.databaseURL,
+    projectId: FIREBASE_CONFIG.projectId,
+    storageBucket: FIREBASE_CONFIG.storageBucket,
+    messagingSenderId: FIREBASE_CONFIG.storageBucket
   };
 
 @NgModule({
